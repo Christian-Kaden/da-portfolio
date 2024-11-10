@@ -29,6 +29,19 @@
   opacity: 0;
 }
 
+.btn {
+  background: #70e61c;
+  padding: 15px 30px;
+  font-size: 23px;
+  line-height: 27.6px;
+  border-radius: 10px;
+  &:hover {
+    background: #9747ff;
+    transform: scale(1.2);
+    transition: transform 100ms ease-in-out;
+  }
+}
+
 @font-face {
   font-family: "Poppins";
   font-style: normal;
@@ -43,5 +56,9 @@
   src: url("./assets/fonts/Poppins-Bold.woff2") format("woff2");
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 1080px) {
+  .btn {
+    font-size: 16px;
+    line-height: 19.2px;
+  }
 }

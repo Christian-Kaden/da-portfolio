@@ -31,19 +31,6 @@ section {
   }
 }
 
-.btn {
-  background: #70e61c;
-  padding: 15px 30px;
-  font-size: 23px;
-  line-height: 27.6px;
-  border-radius: 10px;
-  &:hover {
-    background: #9747ff;
-    transform: scale(1.2);
-    transition: transform 100ms ease-in-out;
-  }
-}
-
 a {
   text-decoration: none;
   color: #ffffff;
@@ -136,11 +123,6 @@ footer {
   h3 {
     font-size: 32px;
     line-height: 32px;
-  }
-
-  .btn {
-    font-size: 16px;
-    line-height: 19.2px;
   }
 }
 
