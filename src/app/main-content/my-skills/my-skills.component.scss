@@ -259,6 +259,14 @@ li:last-child {
   .media h1 {
     margin-right: 10px;
   }
+
+  .text-section {
+    gap: 32px;
+  }
+
+  .skills-details {
+    gap: 40px;
+  }
 }
 
 @keyframes shiftIcon {
