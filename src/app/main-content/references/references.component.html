@@ -2,7 +2,7 @@
   <div class="references-container">
     <!-- <img
       class="quotation-marks"
-      src="./../../../assets/img/quotation-marks.svg"
+      src="assets/img/quotation-marks.svg"
       alt=""
     /> -->
     <div class="purple-line min-w invisible"></div>
@@ -11,7 +11,9 @@
         <div class="purple-line invisible"></div>
         <div class="profile-image">
           <img
-            src="./../../../assets/img/about-me-profile.jpg"
+            src="assets/img/reference-profile-picture ({{
+              currentCardIndex
+            }}).jpg"
             alt="Profile Image"
           />
         </div>
@@ -19,22 +21,20 @@
       </section>
       <section class="bubble-section">
         <p>
-          It was a great pleasure to work with Michael. He knows how to push and
-          encourage team members to present the best work possible, always
-          adding something to brainstorm. Regarding the well-being of group
-          members, he was always present and available to listen and help
-          others, with a great sense of humor as well.
+          {{ cards[currentCardIndex].text }}
         </p>
         <div class="alias">
           <div class="purple-line-thin"></div>
-          <span>I.Nuber - Frontend Engineer</span>
+          <span>{{ cards[currentCardIndex].author }}</span>
         </div>
       </section>
       <section class="image-section dp">
         <div class="purple-line"></div>
         <div class="profile-image">
           <img
-            src="./../../../assets/img/about-me-profile.jpg"
+            src="assets/img/reference-profile-picture ({{
+              currentCardIndex
+            }}).jpg"
             alt="Profile Image"
           />
         </div>
@@ -43,5 +43,23 @@
     </div>
     <div class="purple-line min-w top"></div>
   </div>
-  <nav></nav>
+  <nav>
+    <button (click)="prevCard()" class="arrow">
+      <img class="btn-arrow" src="assets/img/reference-arrow.svg" alt="" />
+    </button>
+    <div class="dots">
+      <span
+        *ngFor="let card of cards; let i = index"
+        [class.active]="i === currentCardIndex"
+        (click)="goToCard(i)"
+      ></span>
+    </div>
+    <button (click)="nextCard()" class="arrow">
+      <img
+        class="btn-arrow right"
+        src="assets/img/reference-arrow.svg"
+        alt=""
+      />
+    </button>
+  </nav>
 </main>

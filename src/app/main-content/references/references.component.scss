@@ -4,6 +4,7 @@ main {
   left: 0;
   display: flex;
   flex-direction: column;
+  gap: 32px;
 }
 
 .references-container {
@@ -72,6 +73,10 @@ span {
   overflow: hidden;
   width: 272px;
   height: 272px;
+  > img {
+    object-fit: cover;
+    object-position: center;
+  }
 }
 
 .profile-image img {
@@ -98,6 +103,56 @@ span {
   left: 32px;
   height: 68px;
   z-index: 9;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+}
+
+.right {
+  transform: scaleX(-1);
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  > img {
+    width: 32px;
+    height: 32px;
+    border: 2px solid #141d2f;
+    border-radius: 20px;
+  }
+  &:hover img {
+    cursor: pointer;
+    border-color: #70e61c;
+  }
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.dots span {
+  height: 8px;
+  width: 8px;
+  background-color: #9747ff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.dots span.active {
+  background-color: #70e61c;
 }
 
 @media (max-width: 1280px) {

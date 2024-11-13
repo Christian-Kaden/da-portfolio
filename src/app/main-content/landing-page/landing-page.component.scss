@@ -87,6 +87,9 @@ footer {
   display: flex;
   gap: 32px;
   flex-grow: 1;
+  > a:hover {
+    transform: scale(1.2);
+  }
 }
 
 .purple-line {
