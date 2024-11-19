@@ -1,1 +1,186 @@
-<p>contact-me works!</p>
+<div id="contact"></div>
+<main class="w-full p-top">
+  <div class="contact-me-container w-full">
+    <div class="purple-line min-w"></div>
+    <div class="contact-me-details max-w">
+      <section class="header-section">
+        <div class="purple-line-inner"></div>
+        <h1>Contact</h1>
+        <div class="purple-line-inner invisible"></div>
+      </section>
+      <section class="contact-section">
+        <div class="description w-full">
+          <h2>Got a problem to solve?</h2>
+          <div>
+            <p>
+              Contact me through this form, I am interested in hearing from you,
+              knowing your ideas and contributing to your projects with my work.
+            </p>
+            <p>Need a Frontend developer? <strong>Contact me!</strong></p>
+          </div>
+        </div>
+        <div class="contact-form w-full">
+          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+            <!-- Name Input -->
+            <div
+              class="form-group"
+              [ngClass]="{
+                valid: isFieldValid('name'),
+                invalid: !isFieldValid('name'),
+                default: !contactForm.get('name')?.touched
+              }"
+            >
+              <input
+                formControlName="name"
+                type="text"
+                placeholder="Your name"
+              />
+              <img
+                *ngIf="isFieldValid('name')"
+                class="icon"
+                src="./../../../assets/img/contact-valid.svg"
+              />
+              <img
+                *ngIf="
+                  !isFieldValid('name') &&
+                  (contactForm.get('name')?.touched || formSubmitted)
+                "
+                class="icon"
+                src="./../../../assets/img/contact-invalid.svg"
+              />
+              <p
+                *ngIf="
+                  contactForm.get('name')?.hasError('required') &&
+                  (contactForm.get('name')?.touched || formSubmitted)
+                "
+                class="error-text"
+              >
+                Your name is required
+              </p>
+            </div>
+
+            <!-- Email Input -->
+            <div
+              class="form-group"
+              [ngClass]="{
+                valid: isFieldValid('email'),
+                invalid: !isFieldValid('email'),
+                default: !contactForm.get('email')?.touched
+              }"
+            >
+              <input
+                formControlName="email"
+                type="email"
+                placeholder="Your mail"
+              />
+              <img
+                *ngIf="isFieldValid('email')"
+                class="icon"
+                src="./../../../assets/img/contact-valid.svg"
+              />
+              <img
+                *ngIf="
+                  !isFieldValid('email') &&
+                  (contactForm.get('email')?.touched || formSubmitted)
+                "
+                class="icon"
+                src="./../../../assets/img/contact-invalid.svg"
+              />
+              <p
+                *ngIf="
+                  contactForm.get('email')?.hasError('required') &&
+                  (contactForm.get('email')?.touched || formSubmitted)
+                "
+                class="error-text"
+              >
+                Your email is required
+              </p>
+            </div>
+
+            <!-- Message Textarea -->
+            <div
+              class="form-group textarea"
+              [ngClass]="{
+                valid: isFieldValid('message'),
+                invalid: !isFieldValid('message'),
+                default: !contactForm.get('message')?.touched
+              }"
+            >
+              <textarea
+                formControlName="message"
+                placeholder="Your message"
+              ></textarea>
+              <img
+                *ngIf="isFieldValid('message')"
+                class="icon"
+                src="./../../../assets/img/contact-valid.svg"
+              />
+              <img
+                *ngIf="
+                  !isFieldValid('message') &&
+                  (contactForm.get('message')?.touched || formSubmitted)
+                "
+                class="icon"
+                src="./../../../assets/img/contact-invalid.svg"
+              />
+              <p
+                *ngIf="
+                  contactForm.get('message')?.hasError('required') &&
+                  (contactForm.get('message')?.touched || formSubmitted)
+                "
+                class="error-text"
+              >
+                Your message is empty
+              </p>
+            </div>
+
+            <!-- Privacy Checkbox -->
+            <div class="form-group checkbox">
+              <div class="flex align-center gap-8">
+                <div class="check-mark">
+                  <input
+                    formControlName="privacy"
+                    type="checkbox"
+                    [(ngModel)]="aggrement"
+                    hidden
+                  />
+                  <img
+                    [ngClass]="{ 'check-mark-unchecked': !aggrement, 'check-mark-checked': aggrement,   }"
+                    (click)="acceptPrivacyPolicy()"
+                    src="./../../../assets/img/contact-checkbox-unchecked.svg"
+                    alt=""
+                  />
+                  <img
+                    [ngClass]="{ 'check-mark-unchecked': aggrement, 'check-mark-checked': !aggrement,   }"
+                    (click)="acceptPrivacyPolicy()"
+                    src="./../../../assets/img/contact-checkbox-checked.svg"
+                    alt=""
+                  />
+                </div>
+                <label
+                  >I’ve read the <a href="#">privacy policy</a> and agree to the
+                  processing of my data as outlined.</label
+                >
+              </div>
+              <p
+                *ngIf="
+                  contactForm.get('privacy')?.hasError('requiredTrue') &&
+                  formSubmitted
+                "
+                class="error-text"
+              >
+                Please accept the privacy policy.
+              </p>
+            </div>
+            <div class="flex justify-center">
+              <button type="submit" [disabled]="!contactForm.valid">
+                Send message :&rpar;
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
+    <div class="purple-line min-w invisible"></div>
+  </div>
+</main>

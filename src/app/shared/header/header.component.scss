@@ -1,27 +1,240 @@
 header {
-  background: #141d2f;
+  position: relative;
+  right: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+}
+
+main {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  background-color: #141d2f;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 300ms, opacity 300ms ease-in-out;
+}
+
+main.open {
+  visibility: visible;
+  opacity: 0.7;
+  animation: slideIn 300ms ease-in-out;
+  transition: opacity 300ms ease-in-out, visibility 0s linear 0s;
+}
+
+main.close {
+  opacity: 0;
+  visibility: hidden;
+  animation: slideOut 300ms ease-in-out;
+  transition: opacity 300ms ease-in-out, visibility 0s linear 300ms;
+}
+
+.links-menu.open {
+  visibility: visible;
+  opacity: 1;
+  animation: slideIn 300ms ease-in-out;
+  transition: opacity 300ms ease-in-out, visibility 0s linear 0s;
+}
+
+.links-menu.close {
+  opacity: 0;
+  visibility: hidden;
+  animation: slideOut 300ms ease-in-out;
+  transition: opacity 300ms ease-in-out, visibility 0s linear 300ms;
+}
+
+.links-menu {
+  z-index: 99;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 300ms, opacity 300ms ease-in-out;
   > div {
+    gap: 29px;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 37px 100px;
+    flex-direction: column;
+    background-color: transparent;
+    > a {
+      background-color: transparent;
+      font-size: 23px;
+      line-height: 27.6px;
+      &:hover {
+        cursor: pointer;
+        color: #70e61c;
+        text-decoration: underline #9747ff;
+        text-underline-offset: 6px;
+      }
+    }
   }
 }
 
-nav {
+.header-container {
   display: flex;
   align-items: center;
-  gap: 29px;
+  justify-content: space-between;
+  flex-grow: 1;
+  background: #141d2f;
+  z-index: 2;
+  padding: 37px 0;
+}
+
+.header-details {
+  width: 100% !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 a {
-  font-size: 23px;
-  line-height: 27.6px;
-  text-underline-position: from-font;
-  text-decoration-skip-ink: none;
   text-decoration: none;
   color: #ffffff;
-  &:hover {
+}
+
+.logo-section {
+  display: flex;
+}
+
+.logo {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 48px;
+}
+
+.links {
+  display: flex;
+  justify-content: flex-end;
+  gap: 29px;
+  > a {
+    font-size: 23px;
+    line-height: 27.6px;
+  }
+  > a:hover {
     color: #70e61c;
+  }
+}
+
+.burger-menu {
+  width: 30px;
+  height: 30px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.icon {
+  width: 30px;
+  height: 2px;
+  background-color: white;
+  position: relative;
+  transition: all 0.3s ease;
+  border-radius: 3px;
+}
+
+.icon::before,
+.icon::after {
+  content: "";
+  width: 30px;
+  height: 2px;
+  background-color: white;
+  position: absolute;
+  transition: all 0.3s ease;
+  border-radius: 3px;
+}
+
+.icon::before {
+  top: -12px;
+}
+
+.icon::after {
+  bottom: -12px;
+}
+
+.icon.open {
+  background-color: transparent;
+}
+
+.icon.open::before {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+.icon.open::after {
+  transform: rotate(-45deg);
+  bottom: 0;
+}
+
+@media (max-width: 1080px) {
+  .min-w {
+    min-width: 64px;
+  }
+
+  .logo {
+    font-size: 32px;
+    line-height: 40px;
+  }
+}
+
+@media (max-width: 780px) {
+  .min-w {
+    min-width: 48px;
+  }
+}
+
+@media (max-width: 680px) {
+  .links a {
+    display: none;
+  }
+
+  .burger-menu {
+    display: flex;
+  }
+
+  .links-menu.close {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  main.close {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@media (max-width: 480px) {
+  .min-w {
+    min-width: 24px;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
   }
 }
