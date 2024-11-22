@@ -1,15 +1,19 @@
 * {
   margin: 0;
   font-family: "Poppins";
-  background: #141d2f;
 }
 
 html {
   scroll-behavior: smooth;
+  background-color: #141d2f;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 .p-top {
-  padding-top: 124px;
+  padding-top: 186px;
 }
 
 .m-top {
@@ -62,6 +66,22 @@ html {
   }
 }
 
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #2a3647;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #9747ff;
+  border-radius: 10px;
+  border: 2px solid #2a3647;
+}
+
 @font-face {
   font-family: "Poppins";
   font-style: normal;
@@ -76,9 +96,24 @@ html {
   src: url("./assets/fonts/Poppins-Bold.woff2") format("woff2");
 }
 
+@media (max-width: 1440px) {
+  .p-top {
+    padding-top: 156px;
+  }
+}
+
 @media (max-width: 1080px) {
   .btn {
     font-size: 16px;
     line-height: 19.2px;
+  }
+  .p-top {
+    padding-top: 124px;
+  }
+}
+
+@media (max-height: 700px) {
+  .p-top {
+    padding-top: 80px;
   }
 }

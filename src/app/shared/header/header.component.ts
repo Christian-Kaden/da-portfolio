@@ -35,6 +35,12 @@ export class HeaderComponent {
     this.checkWindowSize();
   }
 
+  closeMenu() {
+    this.isOpen = false;
+    this.menuState = 'close';
+    this.restoreScroll();
+  }
+
   private checkWindowSize() {
     if (window.innerWidth > 680) {
       this.menuState = 'close';
@@ -43,10 +49,10 @@ export class HeaderComponent {
   }
 
   private disableScroll() {
-    document.body.style.overflow = 'hidden'; // Deaktiviert Scrollen
+    document.body.style.overflow = 'hidden';
   }
 
   private restoreScroll() {
-    document.body.style.overflow = ''; // Setzt Standardwert zurück
+    document.body.style.overflow = '';
   }
 }
