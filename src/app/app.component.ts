@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './shared/header/header.component';
-import { MainContentComponent } from './main-content/main-content.component';
 import { FooterComponent } from './shared/footer/footer.component';
 
 @Component({
@@ -12,8 +11,8 @@ import { FooterComponent } from './shared/footer/footer.component';
     CommonModule,
     RouterOutlet,
     HeaderComponent,
-    MainContentComponent,
     FooterComponent,
+    RouterModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
