@@ -238,3 +238,9 @@ a {
     transform: translateX(100%);
   }
 }
+
+@media (max-height: 700px) {
+  .header-container {
+    padding: 24px 0;
+  }
+}
