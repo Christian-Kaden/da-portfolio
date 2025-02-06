@@ -298,3 +298,9 @@ footer {
     gap: 32px;
   }
 }
+
+@media (max-height: 700px) {
+  .hero-container {
+    padding-top: 90px;
+  }
+}
