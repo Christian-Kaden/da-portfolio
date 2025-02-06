@@ -15,7 +15,7 @@ main {
   justify-content: space-between;
   // flex-grow: 1;
   height: 100vh;
-  padding-top: 120px;
+  padding-top: 114px;
   max-height: 100vh;
   padding-bottom: 100px;
 }
@@ -291,7 +291,7 @@ footer {
 
 @media (max-height: 1024px) {
   .hero-image img {
-    height: calc((100dvh - 120px) / 1.7);
+    height: calc((100vh - 120px) / 1.7);
   }
   .hero-details {
     justify-content: center;
