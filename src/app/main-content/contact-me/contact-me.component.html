@@ -20,7 +20,10 @@
           </div>
         </div>
         <div class="contact-form w-full">
-          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+          <!-- <form
+            [formGroup]="contactForm"
+            (ngSubmit)="onSubmit()"
+          >
             <div
               class="form-group"
               [ngClass]="{
@@ -33,6 +36,7 @@
                 formControlName="name"
                 type="text"
                 placeholder="Your name"
+                [ngModel]="contactData.name"
               />
               <img
                 *ngIf="isFieldValid('name')"
@@ -70,6 +74,8 @@
                 formControlName="email"
                 type="email"
                 placeholder="Your mail"
+                [ngModel]="contactData.email"
+                pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
               />
               <img
                 *ngIf="isFieldValid('email')"
@@ -106,6 +112,7 @@
               <textarea
                 formControlName="message"
                 placeholder="Your message"
+                [ngModel]="contactData.message"
               ></textarea>
               <img
                 *ngIf="isFieldValid('message')"
@@ -171,6 +178,136 @@
             <div class="flex justify-center">
               <button type="submit" [disabled]="!contactForm.valid">
                 Send message :&rpar;
+              </button>
+            </div>
+          </form> -->
+
+          <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)">
+            <div
+              class="form-group"
+              [ngClass]="{ valid: name.valid, invalid: !name.valid }"
+            >
+              <input
+                name="name"
+                type="text"
+                placeholder="Your name"
+                [(ngModel)]="contactData.name"
+                #name="ngModel"
+                required
+              />
+              <img
+                *ngIf="name.valid"
+                class="icon"
+                src="./../../../assets/img/contact-valid.svg"
+              />
+              <img
+                *ngIf="!name.valid && name.touched"
+                class="icon"
+                src="./../../../assets/img/contact-invalid.svg"
+              />
+              <p *ngIf="name.invalid && name.touched" class="error-text">
+                Your name is required
+              </p>
+            </div>
+
+            <div
+              class="form-group"
+              [ngClass]="{ valid: email.valid, invalid: !email.valid }"
+            >
+              <input
+                name="email"
+                type="email"
+                placeholder="Your mail"
+                [(ngModel)]="contactData.email"
+                #email="ngModel"
+                required
+                email
+                pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
+              />
+              <img
+                *ngIf="email.valid"
+                class="icon"
+                src="./../../../assets/img/contact-valid.svg"
+              />
+              <img
+                *ngIf="!email.valid && email.touched"
+                class="icon"
+                src="./../../../assets/img/contact-invalid.svg"
+              />
+              <p *ngIf="email.invalid && email.touched" class="error-text">
+                Your email is required
+              </p>
+            </div>
+
+            <div
+              class="form-group textarea"
+              [ngClass]="{ valid: message.valid, invalid: !message.valid }"
+            >
+              <textarea
+                name="message"
+                placeholder="Your message"
+                [(ngModel)]="contactData.message"
+                #message="ngModel"
+                required
+              ></textarea>
+              <img
+                *ngIf="message.valid"
+                class="icon"
+                src="./../../../assets/img/contact-valid.svg"
+              />
+              <img
+                *ngIf="!message.valid && message.touched"
+                class="icon"
+                src="./../../../assets/img/contact-invalid.svg"
+              />
+              <p *ngIf="message.invalid && message.touched" class="error-text">
+                Your message is empty
+              </p>
+            </div>
+
+            <div class="form-group checkbox">
+              <div class="flex align-center gap-8">
+                <div class="check-mark">
+                  <input
+                    name="privacy"
+                    type="checkbox"
+                    [(ngModel)]="aggrement"
+                    #privacy="ngModel"
+                    required
+                    hidden
+                  />
+                  <img
+                    [ngClass]="{
+                      'check-mark-unchecked': !aggrement,
+                      'check-mark-checked': aggrement
+                    }"
+                    (click)="acceptPrivacyPolicy()"
+                    src="./../../../assets/img/contact-checkbox-unchecked.svg"
+                    alt=""
+                  />
+                  <img
+                    [ngClass]="{
+                      'check-mark-unchecked': aggrement,
+                      'check-mark-checked': !aggrement
+                    }"
+                    (click)="acceptPrivacyPolicy()"
+                    src="./../../../assets/img/contact-checkbox-checked.svg"
+                    alt=""
+                  />
+                </div>
+                <label>
+                  I’ve read the <a href="#">privacy policy</a> and agree to the
+                  processing of my data as outlined.
+                </label>
+              </div>
+              <p *ngIf="privacy.invalid && privacy.touched" class="error-text">
+                Please accept the privacy policy.
+              </p>
+            </div>
+
+            <div class="flex justify-center">
+              <button type="submit" [disabled]="!contactForm.form.valid">
+                Send message :)
               </button>
             </div>
           </form>
